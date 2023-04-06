@@ -20,7 +20,6 @@ if File.exist?(project_versions_yaml_path)
   end
 end
 
-require "logstash-core-plugin-api/version"
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Elastic"]
@@ -34,9 +33,9 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "logstash-core-plugin-api"
   gem.require_paths = ["lib"]
-  gem.version       = LOGSTASH_CORE_PLUGIN_API
+  gem.version       = "2.1.16"
 
-  gem.add_runtime_dependency "logstash-core", LOGSTASH_CORE_VERSION.gsub("-", ".")
+  gem.add_runtime_dependency "logstash-core", "8.8.0"
 
   # Make sure we dont build this gem from a non jruby
   # environment.

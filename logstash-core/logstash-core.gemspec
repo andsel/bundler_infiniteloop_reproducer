@@ -26,7 +26,6 @@ if File.exist?(project_versions_yaml_path)
   end
 end
 
-require 'logstash-core/version'
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Elastic"]
@@ -43,7 +42,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "logstash-core"
   gem.require_paths = ["lib"]
-  gem.version       = LOGSTASH_CORE_VERSION.gsub("-", ".")
+  gem.version       = "8.8.0"
 
   gem.platform = "java"
 
@@ -67,7 +66,7 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency "rubyzip", "~> 1"
   gem.add_runtime_dependency "thread_safe", "~> 0.3.6" #(Apache 2.0 license)
 
-  gem.add_runtime_dependency "jrjackson", "= #{ALL_VERSIONS.fetch('jrjackson')}" #(Apache 2.0 license)
+  gem.add_runtime_dependency "jrjackson", "= 0.4.17" #(Apache 2.0 license)
 
   gem.add_runtime_dependency "elasticsearch", '~> 7'
   gem.add_runtime_dependency "manticore", '~> 0.6'
