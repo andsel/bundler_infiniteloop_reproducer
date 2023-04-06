@@ -4,7 +4,7 @@
 # 
 # Use a JRuby 9.4.2.0 version which bundles Bundler 2.4.10
 #
-# ruby -J-Xmx2g -J-Djruby.compile.mode=FORCE -J-Djruby.compile.invokedynamic=true  simplified_reproducer.rb
+# ruby -J-Xmx2g -J-Djruby.compile.mode=FORCE -J-Djruby.compile.invokedynamic=true simplified_reproducer.rb
 
 require "bundler"
 
@@ -14,7 +14,7 @@ puts "current working dir: #{cwd}"
 lockfile = Pathname.new(::File.join(cwd, "lockfiles", "Gemfile.lock"))
 puts "lock_file is: #{lockfile}"
 
-gemfile = Pathname.new("/home/andrea/workspace/bundler_oom_reproducer/bundler file")
+gemfile = Pathname.new("whatever unused")
 
 logstash_core_path = Bundler::Source::Path.new({"gemfile"=>gemfile, "path"=>Pathname.new("./logstash-core"), "root_path"=>Pathname.new(cwd), "gemspec"=>nil})
 logstash_core_plugin_api_path = Bundler::Source::Path.new({"gemfile"=>gemfile, "path"=>Pathname.new("./logstash-core-plugin-api"), "root_path"=>Pathname.new(cwd), "gemspec"=>nil})
