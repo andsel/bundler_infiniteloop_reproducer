@@ -19,6 +19,12 @@ gemfile = Pathname.new("/home/andrea/workspace/bundler_oom_reproducer/bundler fi
 logstash_core_path = Bundler::Source::Path.new({"gemfile"=>gemfile, "path"=>Pathname.new("./logstash-core"), "root_path"=>Pathname.new(cwd), "gemspec"=>nil})
 logstash_core_plugin_api_path = Bundler::Source::Path.new({"gemfile"=>gemfile, "path"=>Pathname.new("./logstash-core-plugin-api"), "root_path"=>Pathname.new(cwd), "gemspec"=>nil})
 
+sources = Bundler::SourceList.new()
+sources.add_global_rubygems_remote("https://rubygems.org")
+sources.add_path_source({"gemfile"=>gemfile, "path"=>Pathname.new("./logstash-core"), "root_path"=>Pathname.new(cwd), "gemspec"=>nil})
+sources.add_path_source({"gemfile"=>gemfile, "path"=>Pathname.new("./logstash-core-plugin-api"), "root_path"=>Pathname.new(cwd), "gemspec"=>nil})
+
+
 deps = []
 deps << Bundler::Dependency.new("logstash-core", [], {"gemfile"=>gemfile, "path"=>"./logstash-core", "source"=>logstash_core_path, "env"=>nil, "platforms"=>[], "group"=>[:default], "should_include"=>true})
 deps << Bundler::Dependency.new("logstash-core-plugin-api", [], {"gemfile"=>gemfile, "path"=>"./logstash-core-plugin-api", "source"=>logstash_core_plugin_api_path, "env"=>nil, "platforms"=>[], "group"=>[:default], "should_include"=>true})
@@ -144,12 +150,6 @@ deps << Bundler::Dependency.new("logstash-output-udp", [], {"gemfile"=>gemfile, 
 deps << Bundler::Dependency.new("logstash-output-webhdfs", [], {"gemfile"=>gemfile, "source"=>nil, "env"=>nil, "platforms"=>[], "group"=>[:default], "should_include"=>true})
 deps << Bundler::Dependency.new("logstash-input-cloudwatch", [], {"gemfile"=>gemfile, "source"=>nil, "env"=>nil, "platforms"=>[], "group"=>[:default], "should_include"=>true})
 
-
-
-sources = Bundler::SourceList.new()
-sources.add_global_rubygems_remote("https://rubygems.org")
-sources.add_path_source({"gemfile"=>gemfile, "path"=>Pathname.new("./logstash-core"), "root_path"=>Pathname.new("/home/andrea/workspace/bundler_oom_reproducer"), "gemspec"=>nil})
-sources.add_path_source({"gemfile"=>gemfile, "path"=>Pathname.new("./logstash-core-plugin-api"), "root_path"=>Pathname.new("/home/andrea/workspace/bundler_oom_reproducer"), "gemspec"=>nil})
 
 definition = Bundler::Definition.new(lockfile, deps, sources, {}, nil, [], [gemfile])
 
