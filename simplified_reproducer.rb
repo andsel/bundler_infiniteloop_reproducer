@@ -2,11 +2,9 @@
 
 # Script to test Bundler leak
 # 
-# To run, copy script to Logstash folder and run:
-# 
-# bin/ruby bundler_error_simplified_reproducer.rb
-# - or -
-# ruby -J-Xmx2g -J-Djruby.compile.mode=FORCE -J-Djruby.compile.invokedynamic=true  bundler_error_simplified_reproducer_v2.rb
+# Use a JRuby 9.4.2.0 version which bundles Bundler 2.4.10
+#
+# ruby -J-Xmx2g -J-Djruby.compile.mode=FORCE -J-Djruby.compile.invokedynamic=true  simplified_reproducer.rb
 
 require "bundler"
 
